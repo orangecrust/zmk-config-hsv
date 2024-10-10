@@ -161,14 +161,21 @@
             label = "TD_NUM_MOSUE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 1>, <&to 4>;
+            bindings = <&mo 1>, <&mo 4>;
         };
 
         td_bkt_mouse: td_bkt_mouse {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_BKT_MOUSE";
             #binding-cells = <0>;
-            bindings = <&mo 2>, <&mo 4>;
+            bindings = <&mo 2>, <&to 4>;
+        };
+
+        jj_mouse: jj_mouse {
+            compatible = "zmk,behavior-tap-dance";
+            label = "JJ_MOUSE";
+            #binding-cells = <0>;
+            bindings = <&kp J>, <&mo 4>;
         };
     };
 
@@ -230,7 +237,7 @@
         qwerty {
             bindings = <
   &kp Q        &kp W            &kp E              &kp R         &kp T          &kp Y       &kp U         &kp I                   &kp O                  &kp P
-  &kp A        &kp S            &kp D              &kp F         &kp G          &kp H       &kp J         &kp K                   &kp L                  &kp SINGLE_QUOTE
+  &kp A        &kp S            &kp D              &kp F         &kp G          &kp H       &jj_mouse     &kp K                   &kp L                  &kp SINGLE_QUOTE
   &kp Z        &hrm LEFT_ALT X  &hrm LEFT_SHIFT C  &hrm LCTRL V  &kp B          &kp N       &hrm RCTRL M  &hrm RIGHT_SHIFT COMMA  &hrm RIGHT_ALT PERIOD  &kp FSLH
   &shift_word  &kp LCTRL        &td_num_mosue      &kp TAB       &kp BACKSLASH  &kp ESCAPE  &kp SEMI      &kp SPACE               &td_bkt_mouse          &kp ENTER
             >;
