@@ -164,13 +164,6 @@
             bindings = <&mo 1>, <&mo 4>;
         };
 
-        jj_mouse: jj_mouse {
-            compatible = "zmk,behavior-tap-dance";
-            label = "JJ_MOUSE";
-            #binding-cells = <0>;
-            bindings = <&kp J>, <&mo 4>;
-        };
-
         ht: ht {
             compatible = "zmk,behavior-hold-tap";
             label = "HT";
@@ -233,6 +226,12 @@
             key-positions = <8 9>;
             timeout-ms = <25>;
         };
+
+        mouse {
+            bindings = <&mo 4>;
+            key-positions = <5 6>;
+            require-prior-idle-ms = <250>;
+        };
     };
 
     keymap {
@@ -242,7 +241,7 @@
             display-name = "qwerty";
             bindings = <
   &kp Q        &kp W            &kp E              &kp R         &kp T          &kp Y       &kp U         &kp I                   &kp O                  &kp P
-  &kp A        &kp S            &kp D              &kp F         &kp G          &kp H       &jj_mouse     &kp K                   &kp L                  &kp SINGLE_QUOTE
+  &kp A        &kp S            &kp D              &kp F         &kp G          &kp H       &kp J         &kp K                   &kp L                  &kp SINGLE_QUOTE
   &kp Z        &hrm LEFT_ALT X  &hrm LEFT_SHIFT C  &hrm LCTRL V  &kp B          &kp N       &hrm RCTRL M  &hrm RIGHT_SHIFT COMMA  &hrm RIGHT_ALT PERIOD  &kp FSLH
   &shift_word  &kp LCTRL        &td_num_mosue      &kp TAB       &kp BACKSLASH  &kp ESCAPE  &kp SEMI      &kp SPACE               &ht 2 ENTER            &kp ENTER
             >;
