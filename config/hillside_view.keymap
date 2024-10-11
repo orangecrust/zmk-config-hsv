@@ -5,9 +5,6 @@
  */
 
 #include <behaviors/mouse_keys.dtsi>
-
-// todo: are these needed?
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -36,6 +33,7 @@
     tpad_peripheral_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&glidepoint1>;
+        layers = <QWERTY NUM FBRACKET BT_NAV WASD>
         y-invert;
         scale-multiplier = <2>;
 
@@ -49,7 +47,7 @@
     tpad_peripheral_scroll {
         compatible = "zmk,input-behavior-listener";
         device = <&glidepoint1>;
-        layers = <NUM>;
+        layers = <BT_NAV>;
 
         /* NOTE: only apply input-code overriding for INPUT_EV_REL */
 

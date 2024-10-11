@@ -9,13 +9,13 @@
 #include <behaviors/mouse_keys.dtsi>
 
 
-#define DEF 0  // layer shortcuts, must match order in which they are defined below
-#define NUM 1
-#define SYM 2
-#define NAV 3
-#define SET 4
-
-#define MO_TO(layer) &mo_to layer layer   // Macro to apply momentary-layer-on-hold/to-layer-on-tap to a specific layer
+// #define DEF 0  // layer shortcuts, must match order in which they are defined below
+// #define NUM 1
+// #define SYM 2
+// #define NAV 3
+// #define SET 4
+// 
+// #define MO_TO(layer) &mo_to layer layer   // Macro to apply momentary-layer-on-hold/to-layer-on-tap to a specific layer
 
 / {
 	/* assign `input-listener` to all pointing devices */
@@ -61,82 +61,82 @@
     };
 };
 
-&mt {
-  flavor = "tap-preferred";
-  tapping-term-ms = <300>; 
-  quick-tap-ms = <125>;
-  
-};
+// &mt {
+//   flavor = "tap-preferred";
+//   tapping-term-ms = <300>; 
+//   quick-tap-ms = <125>;
+//   
+// };
 
-/ {
-  behaviors {
-    // momentary on hold, toggle on tap
-    mo_to: behavior_mo_to {
-         compatible = "zmk,behavior-hold-tap";
-         label = "mo_to";
-         #binding-cells = <2>;
-         flavor = "hold-preferred";
-         tapping-term-ms = <200>;
-         bindings = <&mo>, <&to>;
-    };
+/// {
+  // behaviors {
+  //   // momentary on hold, toggle on tap
+  //   mo_to: behavior_mo_to {
+  //        compatible = "zmk,behavior-hold-tap";
+  //        label = "mo_to";
+  //        #binding-cells = <2>;
+  //        flavor = "hold-preferred";
+  //        tapping-term-ms = <200>;
+  //        bindings = <&mo>, <&to>;
+  //   };
 
-    // prevent multiple uppercase letters on sticky shift https://github.com/zmkfirmware/zmk/issues/903
-    skq: sticky_key_quick_release {
-        compatible = "zmk,behavior-sticky-key";
-        label = "STICKY_KEY_QUICK_RELEASE";
-        #binding-cells = <1>;
-        bindings = <&kp>;
-        release-after-ms = <1000>;
-        quick-release;
-    };
-    // tap: sticky-shift | lshft + tap: caps-word | hold: shift
-    // from https://github.com/urob/zmk-config/blob/main/config/base.keymap 
-    ss_cw: ss_cw {
-         compatible = "zmk,behavior-mod-morph";
-         #binding-cells = <0>;
-         label = "ss_cw";
-         bindings = <&skq LSHFT>, <&caps_word>;
-         mods = <(MOD_LSFT)>;
-    };
+  //   // prevent multiple uppercase letters on sticky shift https://github.com/zmkfirmware/zmk/issues/903
+  //   skq: sticky_key_quick_release {
+  //       compatible = "zmk,behavior-sticky-key";
+  //       label = "STICKY_KEY_QUICK_RELEASE";
+  //       #binding-cells = <1>;
+  //       bindings = <&kp>;
+  //       release-after-ms = <1000>;
+  //       quick-release;
+  //   };
+  //   // tap: sticky-shift | lshft + tap: caps-word | hold: shift
+  //   // from https://github.com/urob/zmk-config/blob/main/config/base.keymap 
+  //   ss_cw: ss_cw {
+  //        compatible = "zmk,behavior-mod-morph";
+  //        #binding-cells = <0>;
+  //        label = "ss_cw";
+  //        bindings = <&skq LSHFT>, <&caps_word>;
+  //        mods = <(MOD_LSFT)>;
+  //   };
 
-    ht: hold_tap {
-        compatible = "zmk,behavior-hold-tap";
-        label = "HOLD_TAP";
-        #binding-cells = <2>;
-        tapping-term-ms = <200>;
-        quick-tap-ms = <150>;
-        flavor = "tap-preferred";
-        bindings = <&kp>, <&kp>;
-    };
+  //   ht: hold_tap {
+  //       compatible = "zmk,behavior-hold-tap";
+  //       label = "HOLD_TAP";
+  //       #binding-cells = <2>;
+  //       tapping-term-ms = <200>;
+  //       quick-tap-ms = <150>;
+  //       flavor = "tap-preferred";
+  //       bindings = <&kp>, <&kp>;
+  //   };
 
-    // tap: sticky layer 1 | double tap: toggle layer 1
-    cl_num: cl_num {
-        compatible = "zmk,behavior-tap-dance";
-        label = "TD_LAYER_NUM";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        // bindings = <&sl NUM>, <&to NUM>;
-        bindings = <&mo NUM>, <&to NUM>;
-    };
+  //   // tap: sticky layer 1 | double tap: toggle layer 1
+  //   cl_num: cl_num {
+  //       compatible = "zmk,behavior-tap-dance";
+  //       label = "TD_LAYER_NUM";
+  //       #binding-cells = <0>;
+  //       tapping-term-ms = <200>;
+  //       // bindings = <&sl NUM>, <&to NUM>;
+  //       bindings = <&mo NUM>, <&to NUM>;
+  //   };
 
-     // tap: sticky layer 2 | double tap: toggle layer 2
-     cl_sym: cl_sym {
-         compatible = "zmk,behavior-tap-dance";
-         label = "TD_LAYER_SYM";
-         #binding-cells = <0>;
-         tapping-term-ms = <200>;
-         bindings = <&sl SYM>, <&to SYM>;
-     };
+  //    // tap: sticky layer 2 | double tap: toggle layer 2
+  //    cl_sym: cl_sym {
+  //        compatible = "zmk,behavior-tap-dance";
+  //        label = "TD_LAYER_SYM";
+  //        #binding-cells = <0>;
+  //        tapping-term-ms = <200>;
+  //        bindings = <&sl SYM>, <&to SYM>;
+  //    };
 
-     // tap: sticky layer 3 | double tap: toggle layer 3
-     cl_nav: cl_nav {
-         compatible = "zmk,behavior-tap-dance";
-         label = "TD_LAYER_NAV";
-         #binding-cells = <0>;
-         tapping-term-ms = <200>;
-         bindings = <&sl NAV>, <&to NAV>;
-     };
-  };
+  //    // tap: sticky layer 3 | double tap: toggle layer 3
+  //    cl_nav: cl_nav {
+  //        compatible = "zmk,behavior-tap-dance";
+  //        label = "TD_LAYER_NAV";
+  //        #binding-cells = <0>;
+  //        tapping-term-ms = <200>;
+  //        bindings = <&sl NAV>, <&to NAV>;
+  //    };
+  // };
 
   // Key numbers
   // -----------------------------------------------------------------------------------------
@@ -146,153 +146,153 @@
   //                                |  36 |   |  37 |
   //              |  38 |  39 |  40 |  41 |   |  42 |  43 |  44  |  45 |
 
-  // Homerow bindings
-  combos {
-    compatible = "zmk,combos";
+  // // Homerow bindings
+  // combos {
+  //   compatible = "zmk,combos";
 
-    combo_esc {
-      key-positions = <27 28>;
-      bindings = <&kp ESC>;
-      timeout-ms = <30>;
-    };
+  //   combo_esc {
+  //     key-positions = <27 28>;
+  //     bindings = <&kp ESC>;
+  //     timeout-ms = <30>;
+  //   };
 
-    combo_ret {
-      key-positions = <32 33>;
-      bindings = <&kp RET>;
-      timeout-ms = <30>;
-    };
+  //   combo_ret {
+  //     key-positions = <32 33>;
+  //     bindings = <&kp RET>;
+  //     timeout-ms = <30>;
+  //   };
 
-    combo_tab {
-      key-positions = <26 27>;
-      bindings = <&kp TAB>;
-      timeout-ms = <30>;
-    };
+  //   combo_tab {
+  //     key-positions = <26 27>;
+  //     bindings = <&kp TAB>;
+  //     timeout-ms = <30>;
+  //   };
 
-    cb_slash {
-      bindings = <&kp SLASH>;
-      key-positions = <31 32>;
-      timeout-ms = <30>;
-    };
+  //   cb_slash {
+  //     bindings = <&kp SLASH>;
+  //     key-positions = <31 32>;
+  //     timeout-ms = <30>;
+  //   };
 
-    left_command {
-      bindings = <&kp LGUI>;
-      key-positions = <15 16>;
-      timeout-ms = <30>;
-    };
+  //   left_command {
+  //     bindings = <&kp LGUI>;
+  //     key-positions = <15 16>;
+  //     timeout-ms = <30>;
+  //   };
 
-    left_alt {
-      bindings = <&kp LEFT_ALT>;
-      key-positions = <16 14>;
-      timeout-ms = <30>;
-    };
+  //   left_alt {
+  //     bindings = <&kp LEFT_ALT>;
+  //     key-positions = <16 14>;
+  //     timeout-ms = <30>;
+  //   };
 
-    left_alt_cmd {
-      bindings = <&kp LG(LEFT_ALT)>;
-      key-positions = <16 15 14>;
-      timeout-ms = <30>;
-    };
+  //   left_alt_cmd {
+  //     bindings = <&kp LG(LEFT_ALT)>;
+  //     key-positions = <16 15 14>;
+  //     timeout-ms = <30>;
+  //   };
 
-    right_command {
-      bindings = <&kp RGUI>;
-      key-positions = <19 20>;
-      timeout-ms = <30>;
-    };
+  //   right_command {
+  //     bindings = <&kp RGUI>;
+  //     key-positions = <19 20>;
+  //     timeout-ms = <30>;
+  //   };
 
-    right_alt {
-      bindings = <&kp RIGHT_ALT>;
-      key-positions = <19 21>;
-      timeout-ms = <30>;
-    };
+  //   right_alt {
+  //     bindings = <&kp RIGHT_ALT>;
+  //     key-positions = <19 21>;
+  //     timeout-ms = <30>;
+  //   };
 
-    right_alt_cmd {
-      bindings = <&kp RG(RIGHT_ALT)>;
-      key-positions = <19 20 21>;
-      timeout-ms = <30>;
-    };
+  //   right_alt_cmd {
+  //     bindings = <&kp RG(RIGHT_ALT)>;
+  //     key-positions = <19 20 21>;
+  //     timeout-ms = <30>;
+  //   };
 
-    // settings related combos
-    to_set {
-      bindings = <&to SET>;
-      key-positions = <2 3 4>;
-      layers = <NAV>;
-      timeout-ms = <30>;
-      };
-    bt_clr {
-      bindings = <&bt BT_CLR>;
-      key-positions = <7 8 9>;
-      layers = <SET>;
-      timeout-ms = <30>;
-      };
+  //   // settings related combos
+  //   to_set {
+  //     bindings = <&to SET>;
+  //     key-positions = <2 3 4>;
+  //     layers = <NAV>;
+  //     timeout-ms = <30>;
+  //     };
+  //   bt_clr {
+  //     bindings = <&bt BT_CLR>;
+  //     key-positions = <7 8 9>;
+  //     layers = <SET>;
+  //     timeout-ms = <30>;
+  //     };
 
-    // symbols
-    cb_excl {
-      bindings = <&kp EXCL>;
-      key-positions = <1 13>;
-      timeout-ms = <30>;
-    };
+  //   // symbols
+  //   cb_excl {
+  //     bindings = <&kp EXCL>;
+  //     key-positions = <1 13>;
+  //     timeout-ms = <30>;
+  //   };
 
-    cb_at {
-      bindings = <&kp AT>;
-      key-positions = <2 14>;
-      timeout-ms = <30>;
-    };
+  //   cb_at {
+  //     bindings = <&kp AT>;
+  //     key-positions = <2 14>;
+  //     timeout-ms = <30>;
+  //   };
 
-    cb_hash {
-      bindings = <&kp HASH>;
-      key-positions = <3 15>;
-      timeout-ms = <30>;
-    };
+  //   cb_hash {
+  //     bindings = <&kp HASH>;
+  //     key-positions = <3 15>;
+  //     timeout-ms = <30>;
+  //   };
 
-    cb_dllr {
-      bindings = <&kp DLLR>;
-      key-positions = <4 16>;
-      timeout-ms = <30>;
-    };
-
-
-    cb_prcnt {
-      bindings = <&kp PRCNT>;
-      key-positions = <5 17>;
-      timeout-ms = <30>;
-    };
+  //   cb_dllr {
+  //     bindings = <&kp DLLR>;
+  //     key-positions = <4 16>;
+  //     timeout-ms = <30>;
+  //   };
 
 
-    cb_caret {
-      bindings = <&kp CARET>;
-      key-positions = <6 18>;
-      timeout-ms = <30>;
-    };
+  //   cb_prcnt {
+  //     bindings = <&kp PRCNT>;
+  //     key-positions = <5 17>;
+  //     timeout-ms = <30>;
+  //   };
 
 
-    cb_amps {
-      bindings = <&kp AMPS>;
-      key-positions = <7 19>;
-      timeout-ms = <30>;
-    };
+  //   cb_caret {
+  //     bindings = <&kp CARET>;
+  //     key-positions = <6 18>;
+  //     timeout-ms = <30>;
+  //   };
 
 
-    cb_mult {
-      bindings = <&kp KP_MULTIPLY>;
-      key-positions = <8 20>;
-      timeout-ms = <30>;
-    };
+  //   cb_amps {
+  //     bindings = <&kp AMPS>;
+  //     key-positions = <7 19>;
+  //     timeout-ms = <30>;
+  //   };
 
 
-    cb_pipe {
-      bindings = <&kp PIPE>;
-      key-positions = <9 21>;
-      timeout-ms = <30>;
-    };
+  //   cb_mult {
+  //     bindings = <&kp KP_MULTIPLY>;
+  //     key-positions = <8 20>;
+  //     timeout-ms = <30>;
+  //   };
 
-    cb_bslash {
-      bindings = <&kp BACKSLASH>;
-      key-positions = <10 22>;
-      timeout-ms = <30>;
-    };
 
-  };
+  //   cb_pipe {
+  //     bindings = <&kp PIPE>;
+  //     key-positions = <9 21>;
+  //     timeout-ms = <30>;
+  //   };
 
-};
+  //   cb_bslash {
+  //     bindings = <&kp BACKSLASH>;
+  //     key-positions = <10 22>;
+  //     timeout-ms = <30>;
+  //   };
+
+  // };
+
+//};
 
 #define __________DEF_L1__________  &none   &kp Q   &kp W   &kp E   &kp R      &kp T
 #define __________DEF_L2__________  &none   &kp A   &kp S   &kp D   &kp F      &kp G
