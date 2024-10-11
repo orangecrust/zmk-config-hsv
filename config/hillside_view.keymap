@@ -33,7 +33,7 @@
     tpad_peripheral_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&glidepoint1>;
-        layers = <QWERTY NUM FBRACKET BT_NAV WASD>
+        layers = <QWERTY NUM FBRACKET BT_NAV WASD>;
         y-invert;
         scale-multiplier = <2>;
 
