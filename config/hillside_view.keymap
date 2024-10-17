@@ -171,6 +171,15 @@
             flavor = "tap-unless-interrupted";
             tapping-term-ms = <3000>;
         };
+
+        leader_layer: leader_layer {
+            compatible = "zmk,behavior-sticky-key";
+            label = "LEADER_LAYER";
+            bindings = <&mo>;
+            #binding-cells = <1>;
+            release-after-ms = <125>;
+            quick-release;
+        };
     };
 
     combos {
@@ -238,10 +247,10 @@
         qwerty {
             display-name = "qwerty";
             bindings = <
-  &kp Q        &kp W            &kp E              &kp R         &kp T          &kp Y       &kp U         &kp I                   &kp O                  &kp P
-  &kp A        &kp S            &kp D              &kp F         &kp G          &kp H       &kp J         &kp K                   &kp L                  &kp SINGLE_QUOTE
-  &kp Z        &hrm LEFT_ALT X  &hrm LEFT_SHIFT C  &hrm LCTRL V  &kp B          &kp N       &hrm RCTRL M  &hrm RIGHT_SHIFT COMMA  &hrm RIGHT_ALT PERIOD  &kp FSLH
-  &shift_word  &kp LCTRL        &td_num_mouse      &kp TAB       &kp BACKSLASH  &kp ESCAPE  &kp SEMI      &kp SPACE               &ht 2 ENTER            &kp ENTER
+  &kp Q        &kp W            &kp E              &kp R            &kp T    &kp Y       &kp U         &kp I                   &kp O                  &kp P
+  &kp A        &kp S            &kp D              &kp F            &kp G    &kp H       &kp J         &kp K                   &kp L                  &kp SINGLE_QUOTE
+  &kp Z        &hrm LEFT_ALT X  &hrm LEFT_SHIFT C  &hrm LCTRL V     &kp B    &kp N       &hrm RCTRL M  &hrm RIGHT_SHIFT COMMA  &hrm RIGHT_ALT PERIOD  &kp FSLH
+  &shift_word  &kp LCTRL        &td_num_mouse      &leader_layer 5  &kp TAB  &kp ESCAPE  &kp SEMI      &kp SPACE               &ht 2 ENTER            &kp ENTER
             >;
         };
 
@@ -282,6 +291,15 @@
   &trans  &kp LEFT_ARROW  &kp DOWN      &kp RIGHT  &trans     &trans     &kp LEFT_ARROW  &kp DOWN      &kp RIGHT  &trans
   &trans  &trans          &trans        &trans     &trans     &trans     &trans          &trans        &trans     &trans
   &to 0   &trans          &mkp RCLK     &mkp LCLK  &mkp MCLK  &mkp MCLK  &mkp LCLK       &mkp RCLK     &trans     &to 0
+            >;
+        };
+
+        leader {
+            bindings = <
+  &kp ESC      &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &kp EQUAL
+  &kp CAPS     &trans  &mkp MB2  &mkp MB1  &trans  &trans  &trans  &trans  &trans  &kp SEMI
+  &shift_word  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+  &trans       &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
