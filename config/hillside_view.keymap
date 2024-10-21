@@ -146,13 +146,13 @@
         lt_layer: lt_layer {
             compatible = "zmk,behavior-hold-tap";
             label = "LT_LAYER";
-            bindings = <&mo>, <&to>;
+            bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <100>;
+            tapping-term-ms = <125>;
+            quick-tap-ms = <125>;
             require-prior-idle-ms = <0>;
-            flavor = "balanced";
+            flavor = "hold-preferred";
         };
 
         td_num_mouse: td_num_mouse {
@@ -251,7 +251,7 @@
   &kp Q    &kp W            &kp E              &kp R            &kp T     &kp Y       &kp U         &kp I                   &kp O                  &kp P
   &kp A    &kp S            &kp D              &kp F            &kp G     &kp H       &kp J         &kp K                   &kp L                  &kp SINGLE_QUOTE
   &kp Z    &hrm LEFT_ALT X  &hrm LEFT_SHIFT C  &hrm LCTRL V     &kp B     &kp N       &hrm RCTRL M  &hrm RIGHT_SHIFT COMMA  &hrm RIGHT_ALT PERIOD  &kp FSLH
-  &kp TAB  &kp LCTRL        &td_num_mouse      &leader_layer 5  &kp CAPS  &kp ESCAPE  &kp SEMI      &kp SPACE               &ht 2 ENTER            &kp ENTER
+  &kp TAB  &kp LCTRL        &td_num_mouse      &lt_layer 5 TAB  &kp CAPS  &kp ESCAPE  &kp SEMI      &kp SPACE               &ht 2 ENTER            &kp ENTER
             >;
         };
 
@@ -295,8 +295,8 @@
             >;
         };
 
-        leader {
-            display-name = "leader";
+        misc {
+            display-name = "misc";
             bindings = <
   &kp ESC      &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &kp EQUAL
   &kp CAPS     &trans  &mkp MB2  &mkp MB1  &trans  &trans  &trans  &trans  &trans  &kp SEMI
