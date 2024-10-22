@@ -123,16 +123,16 @@
             continue-list = <KP_NUMBER_1 KP_NUMBER_2 KP_NUMBER_3 KP_NUMBER_4 KP_NUMBER_5 KP_NUMBER_6 KP_NUMBER_7 KP_NUMBER_8 KP_NUMBER_9 KP_NUMBER_0 NUMBER_1 NUMBER_2 NUMBER_3 NUMBER_4 NUMBER_7 NUMBER_5 NUMBER_6 NUMBER_8 NUMBER_9 NUMBER_0 KP_N1 KP_N2 KP_N3 KP_N4 KP_N5 KP_N6 KP_N7 KP_N8 KP_N9 KP_N0>;
         };
 
-        hrm: hrm {
+        hrm_ctrl_alt: hrm_ctrl_alt {
             compatible = "zmk,behavior-hold-tap";
-            label = "HRM";
+            label = "HRM_CTRL_ALT";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <280>;
             quick-tap-ms = <100>;
-            require-prior-idle-ms = <250>;
+            require-prior-idle-ms = <0>;
         };
 
         shift_word: shift_word {
@@ -152,7 +152,7 @@
             tapping-term-ms = <125>;
             quick-tap-ms = <125>;
             require-prior-idle-ms = <0>;
-            flavor = "hold-preferred";
+            flavor = "tap-unless-interrupted";
         };
 
         td_num_mouse: td_num_mouse {
@@ -173,13 +173,16 @@
             tapping-term-ms = <3000>;
         };
 
-        leader_layer: leader_layer {
-            compatible = "zmk,behavior-sticky-key";
-            label = "LEADER_LAYER";
-            bindings = <&mo>;
-            #binding-cells = <1>;
-            release-after-ms = <125>;
-            quick-release;
+        hrm_shift: hrm_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRM_SHIFT";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <100>;
+            require-prior-idle-ms = <250>;
         };
     };
 
@@ -248,10 +251,10 @@
         qwerty {
             display-name = "qwerty";
             bindings = <
-  &kp Q    &kp W            &kp E              &kp R            &kp T     &kp Y       &kp U         &kp I                   &kp O                  &kp P
-  &kp A    &kp S            &kp D              &kp F            &kp G     &kp H       &kp J         &kp K                   &kp L                  &kp SINGLE_QUOTE
-  &kp Z    &hrm LEFT_ALT X  &hrm LEFT_SHIFT C  &hrm LCTRL V     &kp B     &kp N       &hrm RCTRL M  &hrm RIGHT_SHIFT COMMA  &hrm RIGHT_ALT PERIOD  &kp FSLH
-  &kp TAB  &kp LCTRL        &td_num_mouse      &lt_layer 5 TAB  &kp CAPS  &kp ESCAPE  &kp SEMI      &kp SPACE               &ht 2 ENTER            &kp ENTER
+  &kp Q    &kp W                     &kp E                    &kp R                  &kp T     &kp Y       &kp U                  &kp I                         &kp O                           &kp P
+  &kp A    &kp S                     &kp D                    &kp F                  &kp G     &kp H       &kp J                  &kp K                         &kp L                           &kp SINGLE_QUOTE
+  &kp Z    &hrm_ctrl_alt LEFT_ALT X  &hrm_shift LEFT_SHIFT C  &hrm_ctrl_alt LCTRL V  &kp B     &kp N       &hrm_ctrl_alt RCTRL M  &hrm_shift RIGHT_SHIFT COMMA  &hrm_ctrl_alt RIGHT_ALT PERIOD  &kp FSLH
+  &kp TAB  &kp LCTRL                 &td_num_mouse            &lt_layer 5 TAB        &kp CAPS  &kp ESCAPE  &kp SEMI               &kp SPACE                     &ht 2 ENTER                     &kp ENTER
             >;
         };
 
