@@ -295,10 +295,10 @@
         misc {
             display-name = "misc";
             bindings = <
-  &kp ESC      &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &kp EQUAL
-  &kp CAPS     &trans  &mkp MB2  &mkp MB1  &trans  &trans  &trans  &trans  &trans  &kp SEMI
-  &shift_word  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
-  &trans       &trans  &trans    &kp TAB   &trans  &trans  &trans  &trans  &trans  &trans
+  &kp ESC      &trans   &trans    &trans    &trans  &trans  &trans  &trans  &trans  &kp EQUAL
+  &kp CAPS     &kp TAB  &mkp MB2  &mkp MB1  &trans  &trans  &trans  &trans  &trans  &kp SEMI
+  &shift_word  &trans   &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+  &trans       &trans   &trans    &kp TAB   &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
