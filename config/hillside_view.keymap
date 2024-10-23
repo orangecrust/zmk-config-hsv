@@ -149,8 +149,8 @@
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <125>;
-            quick-tap-ms = <125>;
+            tapping-term-ms = <1000>;
+            quick-tap-ms = <250>;
             require-prior-idle-ms = <0>;
             flavor = "tap-unless-interrupted";
         };
@@ -159,7 +159,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TD_NUM_MOUSE";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&mo 1>, <&mo 4>;
         };
 
@@ -230,12 +230,6 @@
         combo-shift-l {
             bindings = <&kp LEFT_SHIFT>;
             key-positions = <22 21>;
-        };
-
-        op-equal {
-            bindings = <&kp EQUAL>;
-            key-positions = <8 9>;
-            timeout-ms = <25>;
         };
 
         mouse {
