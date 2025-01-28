@@ -113,6 +113,17 @@
 
             label = "RIGHT_WORD";
         };
+
+        kp_then_to_layer: key_then_layer_switch {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_tap>,
+                <&to 0>;
+
+            label = "KEY_THEN_LAYER_SWITCH";
+        };
     };
 
     behaviors {
@@ -156,14 +167,6 @@
             flavor = "tap-unless-interrupted";
         };
 
-        td_num_mouse: td_num_mouse {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_NUM_MOUSE";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;
-            bindings = <&mo 1>, <&mo 4>;
-        };
-
         ht: ht {
             compatible = "zmk,behavior-hold-tap";
             label = "HT";
@@ -185,20 +188,30 @@
             quick-tap-ms = <100>;
             require-prior-idle-ms = <250>;
         };
+
+        ht_layer: ht_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_LAYER";
+            bindings = <&mo>, <&to>;
+
+            #binding-cells = <2>;
+            flavor = "tap-unless-interrupted";
+            tapping-term-ms = <3000>;
+        };
     };
 
     combos {
         compatible = "zmk,combos";
 
         df-nav {
-            bindings = <&mo 3>;
+            bindings = <&mo 4>;
             key-positions = <13 12>;
         };
 
         kl-bs-word {
             bindings = <&bs_word>;
             key-positions = <17 18>;
-            layers = <0 1 2>;
+            layers = <0 1 3>;
         };
 
         rgui {
@@ -214,13 +227,13 @@
         lword {
             bindings = <&left_word>;
             key-positions = <16 15>;
-            layers = <3>;
+            layers = <4>;
         };
 
         rword {
             bindings = <&right_word>;
             key-positions = <17 18>;
-            layers = <3>;
+            layers = <4>;
         };
 
         combo-shift-r {
@@ -234,14 +247,14 @@
         };
 
         mouse {
-            bindings = <&mo 4>;
+            bindings = <&mo 5>;
             key-positions = <5 6>;
             require-prior-idle-ms = <250>;
         };
 
         underscore {
             bindings = <&kp UNDERSCORE>;
-            key-positions = <28 27>;
+            key-positions = <8 7>;
         };
     };
 
@@ -254,7 +267,7 @@
   &kp Q    &kp W                     &kp E                    &kp R                  &kp T     &kp Y       &kp U                  &kp I                         &kp O                           &kp P
   &kp A    &kp S                     &kp D                    &kp F                  &kp G     &kp H       &kp J                  &kp K                         &kp L                           &kp SINGLE_QUOTE
   &kp Z    &hrm_ctrl_alt LEFT_ALT X  &hrm_shift LEFT_SHIFT C  &hrm_ctrl_alt LCTRL V  &kp B     &kp N       &hrm_ctrl_alt RCTRL M  &hrm_shift RIGHT_SHIFT COMMA  &hrm_ctrl_alt RIGHT_ALT PERIOD  &kp FSLH
-  &kp TAB  &kp LCTRL                 &td_num_mouse            &lt_layer 5 TAB        &kp CAPS  &kp ESCAPE  &kp SEMI               &kp SPACE                     &ht 2 ENTER                     &kp ENTER
+  &kp TAB  &kp LCTRL                 &ht_layer 1 2            &lt_layer 6 TAB        &kp CAPS  &kp ESCAPE  &kp SEMI               &kp SPACE                     &ht 3 ENTER                     &kp ENTER
             >;
         };
 
@@ -268,13 +281,23 @@
             >;
         };
 
+        sticky_numbers {
+            display-name = "numbers";
+            bindings = <
+  &kp EXCL         &kp AT           &kp HASH         &kp DLLR               &kp PRCNT        &kp CARET        &kp AMPS         &kp ASTRK                &kp LPAR                 &kp RPAR
+  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_4        &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_NUMBER_7  &kp KP_NUMBER_8          &kp KP_NUMBER_9          &kp KP_NUMBER_0
+  &kp TILDE        &kp GRAVE        &trans           &trans                 &kp BACKSLASH    &kp MINUS        &kp UNDER        &trans                   &trans                   &trans
+  &kp LEFT         &kp RIGHT        &trans           &kp_then_to_layer TAB  &trans           &trans           &kp BACKSPACE    &kp_then_to_layer SPACE  &kp_then_to_layer ENTER  &trans
+            >;
+        };
+
         function_bracket {
             display-name = "brackets";
             bindings = <
   &kp F1  &kp F2   &kp F3   &kp F4   &trans  &trans     &kp KP_NUMLOCK         &kp INSERT         &kp PAUSE_BREAK  &kp PRINTSCREEN
   &kp F5  &kp F6   &kp F7   &kp F8   &trans  &kp MINUS  &kp LEFT_PARENTHESIS   &kp LEFT_BRACKET   &kp LEFT_BRACE   &kp COLON
   &kp F9  &kp F10  &kp F11  &kp F12  &trans  &kp UNDER  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp SEMI
-  &trans  &trans   &mo 3    &trans   &trans  &trans     &trans                 &trans             &trans           &trans
+  &trans  &trans   &mo 4    &trans   &trans  &trans     &trans                 &trans             &trans           &trans
             >;
         };
 
