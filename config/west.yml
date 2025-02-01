@@ -6,12 +6,17 @@ manifest:
       url-base: https://github.com/badjeff
     - name: petejohanson
       url-base: https://github.com/petejohanson
+    - name: orangecrust
+      url-base: https://github.com/orangecrust
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
     - name: cirque-input-module
       remote: petejohanson
+      revision: main
+    - name: hsv-zmk-module
+      remote: orangecrust
       revision: main
   self:
     path: config
